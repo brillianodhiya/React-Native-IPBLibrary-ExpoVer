@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "IPBLibraryExpoVer",
-    "slug": "IPBLibraryExpoVer",
+    "name": "IPBLibrary",
+    "slug": "IPBLibrary",
     "privacy": "public",
     "sdkVersion": "34.0.0",
     "platforms": [
@@ -11,9 +11,9 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/bookshelf.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splashing.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

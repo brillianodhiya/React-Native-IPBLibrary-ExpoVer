@@ -5,7 +5,7 @@ import genres from './genres';
 import user from './users';
 
 const rootReducer = combineReducers ({
-    // book,
+    book,
     genres,
     user,
 });

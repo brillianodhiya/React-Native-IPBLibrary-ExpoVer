@@ -9,9 +9,15 @@ import { Provider } from 'react-redux';
 
 import store from './src/public/redux/store';
 
+import NavigationService from "./src/components/Navigationservice";
+
 import Login from './src/screens/Login';
 import Register from './src/screens/Register';
 import Home from './src/screens/Home';
+import Viewbook from "./src/screens/Viewbook";
+import History from "./src/screens/History";
+import Account from "./src/screens/Account";
+import RequestBook from "./src/screens/Request";
 
 
 const AppNavigator = createStackNavigator({
@@ -29,6 +35,38 @@ const AppNavigator = createStackNavigator({
   },
   Home: {
     screen: Home,
+    navigationOptions: {
+      header: null
+    }
+  },
+  Viewbook: {
+    screen: Viewbook,
+    navigationOptions: {
+      headerTransparent: {
+        position: 'absolute',
+        backgroundColor: 'transparent',
+        zIndex: 100,
+        top: 0,
+        left: 0,
+        right: 0,
+        color: 'white',
+      },
+    }
+  },
+  History: {
+    screen: History,
+    navigationOptions: {
+      header: null
+    }
+  },
+  Account: {
+    screen: Account,
+    navigationOptions: {
+      header: null
+    }
+  },
+  Request: {
+    screen: RequestBook,
     navigationOptions: {
       header: null
     }
@@ -62,7 +100,9 @@ export default class App extends React.Component {
 
     return (
       <Provider store={store}>
-        <AppContainer />
+        <AppContainer ref={navigatorRef => {
+          NavigationService.setTopLevelNavigator(navigatorRef)
+        }} />
       </Provider>
     );
   }

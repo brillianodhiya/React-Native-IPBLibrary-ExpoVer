@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { AsyncStorage } from "react-native";
 import {
   Container,
   Text,
@@ -8,49 +9,44 @@ import {
   Input,
   Thumbnail,
   Button,
-  Icon
+  Icon,
+  Content
 } from "native-base";
 import { Col, Grid } from "react-native-easy-grid";
-import { ScrollView } from "react-native-gesture-handler";
 import { userRegister } from "../public/redux/action/users";
 import { connect } from "react-redux";
-
-console.disableYellowBox=true;
-
-const mapDispatchToProps = (dispatch) => ({
-  userRegister: (username, name, email, password) =>
-    dispatch(userRegister(username, name, email, password))
-});
-
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  }
-}
 
 class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
       name: "",
+      username: "",
       email: "",
       password: ""
     };
   }
 
-  async userRegister(username, name, email, password) {
-    if (username == "" || name == "" || email == "" || password) {
-      alert("Opps Please Check The Column");
+  handleRegister = async event => {
+    event.preventDefault();
+    if (
+      this.state.name == "" ||
+      this.state.username == "" ||
+      this.state.email == "" ||
+      this.state.password == ""
+    ) {
+      alert("Please fill all column");
     } else {
-      this.props.userRegister(username, name, email, password);
+      const { username, name, email, password } = this.state;
+      await this.props.dispatch(userRegister(username, name, email, password));
     }
-  }
+  };
 
   render() {
+    if (AsyncStorage.getItem("access_token") != null ) {
     return (
       <Container>
-        <ScrollView>
+        <Content padder showsVerticalScrollIndicator={false}>
           <Grid>
             <Col style={{ width: "100%" }}>
               <Thumbnail
@@ -74,23 +70,23 @@ class Register extends Component {
                   <Label>Username</Label>
                   <Input
                     maxLength={8}
-                    value={this.state.username}
                     onChangeText={username => this.setState({ username })}
+                    value={this.state.username}
                   />
                 </Item>
                 <Item stackedLabel>
                   <Label>Full Name</Label>
                   <Input
                     maxLength={16}
-                    value={this.state.name}
                     onChangeText={name => this.setState({ name })}
+                    value={this.state.name}
                   />
                 </Item>
                 <Item stackedLabel>
                   <Label>Email</Label>
                   <Input
-                    value={this.state.email}
                     onChangeText={email => this.setState({ email })}
+                    value={this.state.email}
                   />
                 </Item>
                 <Item stackedLabel>
@@ -98,32 +94,23 @@ class Register extends Component {
                   <Input
                     secureTextEntry
                     maxLength={16}
-                    value={this.state.password}
                     onChangeText={password => this.setState({ password })}
+                    value={this.state.password}
                   />
                 </Item>
                 <Button
                   androidRippleColor="white"
                   large
-                  iconRight
                   rounded
                   style={{
-                    alignSelf: "flex-end",
                     alignContent: "center",
                     marginTop: 50,
                     marginLeft: 260,
-                    backgroundColor: "#4B4C72"
+                    backgroundColor: "#4B4C72",
+                    width: 60
                   }}
-                  onPress={() =>
-                    this.userRegister(
-                      this.state.username,
-                      this.state.name,
-                      this.state.email,
-                      this.state.password
-                    )
-                  }
+                  onPress={this.handleRegister}
                 >
-                  <Text></Text>
                   <Icon
                     active
                     name="arrow-forward"
@@ -151,11 +138,20 @@ class Register extends Component {
               </Button>
             </Col>
           </Grid>
-        </ScrollView>
+        </Content>
       </Container>
     );
+    } else {
+      return (this.props.navigation.navigate("Home"))
+    }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register)
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
+
+export default connect(mapStateToProps)(Register);
 // export default Register;

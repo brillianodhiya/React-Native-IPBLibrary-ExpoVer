@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { AsyncStorage } from "react-native";
 import {
   Container,
   Text,
@@ -11,9 +12,33 @@ import {
   Icon
 } from "native-base";
 import { Col, Grid } from "react-native-easy-grid";
+import { userLogin } from "../public/redux/action/users";
+import { connect } from "react-redux";
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: ""
+    };
+  }
+
+  handleLogin = async event => {
+    event.preventDefault();
+    if (
+      this.state.email == "" ||
+      this.state.password == ""
+    ) {
+      alert("Please fill all column")
+    } else {
+      const { email, password } = this.state;
+      await this.props.dispatch(userLogin(email, password));
+    }
+  }
   render() {
+    if (AsyncStorage.getItem("access_token") !== null ) {
     return (
       <Container>
         <Grid>
@@ -37,14 +62,22 @@ class Login extends Component {
             <Form style={{ marginRight: 40, marginTop: 25 }}>
               <Item stackedLabel>
                 <Label>Email</Label>
-                <Input />
+                <Input
+                  onChangeText={email => this.setState({ email })}
+                  value={this.state.email}
+                />
               </Item>
               <Item stackedLabel>
                 <Label style={{ color: "#4B4C72" }}>Password</Label>
-                <Input secureTextEntry maxLength={16} />
+                <Input 
+                  secureTextEntry 
+                  maxLength={16} 
+                  onChangeText={password => this.setState({ password })}
+                  value={this.state.password}
+                />
               </Item>
               <Button
-                onPress={() => this.props.navigation.navigate('Home')}
+                onPress={this.handleLogin}
                 androidRippleColor="white"
                 large
                 iconRight
@@ -71,7 +104,16 @@ class Login extends Component {
         </Grid>
       </Container>
     );
+    } else {
+      return (this.props.navigation.navigate("Home"))
+    }
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
+
+export default connect(mapStateToProps)(Login);

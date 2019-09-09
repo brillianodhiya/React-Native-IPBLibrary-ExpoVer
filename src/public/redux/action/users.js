@@ -1,29 +1,115 @@
 import Axios from "axios";
+import { AsyncStorage } from "react-native";
 import { Alert } from "react-native";
+import NavigationService from "../../../components/Navigationservice";
 
 export const userRegister = (username, name, email, password) => {
   return {
     type: "USER_REGISTER",
-    payload: Axios.post("https://floating-sierra-16009.herokuapp.com/books/register", {
-      data
+    payload: Axios.post("http://192.168.6.155:8888/books/register", {
+      username,
+      name,
+      email,
+      password
     })
       .then(res => {
         if (res.status == 200) {
           Alert.alert(
-            'Register Success',
-            'Press Ok to redirect in login page',
+            "Register Success",
+            "Press Ok to redirect in login page",
             [
-              {text: 'Ok', onPress: () => this.props.navigation.navigate('Login')},
+              {
+                text: "Ok",
+                onPress: () => NavigationService.navigate("Login")
+              }
             ],
             { cancelable: false }
-          )
+          );
         } else {
           Alert.alert(
-            'Register Failed',
-            'Maybe Your Username or Email Already Taken',
+            "Register Failed",
+            "Maybe Your Username or Email Already Taken",
             [
-              { text: 'Ok, I want to change it', onPress: () => console.log(res) },
-              { text: 'I have remember my account', onPress: () => this.props.navigation.navigate('Login') },
+              {
+                text: "Ok, I want to change it",
+                onPress: () => console.log(res)
+              },
+              {
+                text: "I have remember my account",
+                onPress: () => NavigationService.navigate("Login")
+              }
+            ],
+            { cancelable: true }
+          );
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        Alert.alert(
+          "Register Failed",
+          "Maybe Your Username or Email Already Teken",
+          [
+            {
+              text: "Ok, I want to change it",
+              onPress: () => console.log(err)
+            },
+            {
+              text: "I have remember my account",
+              onPress: () => NavigationService.navigate("Login")
+            }
+          ],
+          { cancelable: true }
+        );
+      })
+  };
+};
+
+export const userLogin = (email, password) => {
+  return {
+    type: "USER_LOGIN",
+    payload: Axios.post(
+      "http://192.168.6.155:8888/books/login",
+      {
+        email,
+        password
+      }
+    )
+      .then(res => {
+        if (res.status == 200) {
+          AsyncStorage.setItem(
+            "access_token",
+            "Bearer " + res.data.acces_token
+            )
+            AsyncStorage.setItem(
+              "name",
+              res.data.name
+              )
+              Alert.alert(
+                `Welcome Back`,
+                `${res.data.name}`,
+                [
+                  {
+                    text: 'Ok',
+                    onPress: () => NavigationService.navigate('Home')
+                  },
+                ],
+                {
+                  cancelable: false
+                }
+              )
+            } else {
+          Alert.alert(
+            "Login Failed",
+            "We Can't Found This Email",
+            [
+              {
+                text: "I dont have Account",
+                onPress: () => NavigationService.navigate("Register")
+              },
+              {
+                text: "Ok, I have remembered",
+                onPress: () => console.log(res)
+              }
             ],
             { cancelable: true }
           )
@@ -32,59 +118,20 @@ export const userRegister = (username, name, email, password) => {
       .catch(err => {
         console.log(err);
         Alert.alert(
-          'Register Failed',
-          'Maybe Your Username or Email Already Teken',
+          "Login Failed",
+          "We Can't Found This Email",
           [
-            { text: 'Ok, I want to change it', onPress: () => console.log(err) },
-            { text: 'I have remember my account', onPress: () => this.props.navigation.navigate('Login') },
+            {
+              text: "I dont have Account",
+              onPress: () => NavigationService.navigate("Register")
+            },
+            {
+              text: "Ok, I have remembered",
+              onPress: () => console.log(err)
+            }
           ],
           { cancelable: true }
         )
-      })
-  };
-};
-
-export const userLogin = (email, password) => {
-  return {
-    type: "USER_LOGIN",
-    payload: Axios.post("https://floating-sierra-16009.herokuapp.com/books/login", {
-      email,
-      password
-    })
-      .then(res => {
-        if (res.status == 200) {
-          swal({
-            title: "Login Success!",
-            text: "Welcome Back " + res.data.name,
-            buttons: false,
-            timer: 3000,
-            icon: "success"
-          });
-          window.localStorage.setItem("access_token","Bearer "+ res.data.acces_token);
-          window.localStorage.setItem(
-            "name",
-            res.data.level + " " + res.data.name
-          );
-          // Axios.create({ baseURL: 'http://localhost:8888/', headers: { x_token: res.data.acces_token } });
-          setInterval(() => (window.location = "/Home"), 3200);
-        } else {
-          swal("Login Failed", {
-            text: res.data.message,
-            buttons: false,
-            timer: 3000,
-            icon: "warning"
-          });
-        }
-      })
-      .catch(err => {
-        console.log(err);
-        swal({
-          title: "Login Failed",
-          text: "We Can't Found This Email",
-          buttons: false,
-          timer: 3000,
-          icon: "warning"
-        });
       })
   };
 };

@@ -4311,6 +4311,11 @@ randomatic@^3.0.0:
     kind-of "^6.0.0"
     math-random "^1.0.1"
 
+randomcolor@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/randomcolor/-/randomcolor-0.5.4.tgz#df615b13f25b89ea58c5f8f72647f0a6f07adcc3"
+  integrity sha512-nYd4nmTuuwMFzHL6W+UWR5fNERGZeVauho8mrJDUSXdNDbao4rbrUwhuLgKC/j8VCS5+34Ria8CsTDuBjrIrQA==
+
 range-parser@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
@@ -4400,6 +4405,14 @@ react-native-keyboard-aware-scroll-view@0.9.1:
   dependencies:
     prop-types "^15.6.2"
     react-native-iphone-x-helper "^1.0.3"
+
+react-native-ratings@^6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-ratings/-/react-native-ratings-6.4.0.tgz#1923e445dbb4092eb880937ac4f7498b06815c3c"
+  integrity sha512-QvRJiEzjXZa7OL1MhJzbc50yUaOzPgjU6vGpkfIpWvgOyrjjkoQQqQ7EFvkoQMSEoRLD33eKTT3huJolScFoHQ==
+  dependencies:
+    lodash "^4.17.4"
+    prop-types "^15.5.10"
 
 react-native-safe-area-view@^0.14.1:
   version "0.14.7"
