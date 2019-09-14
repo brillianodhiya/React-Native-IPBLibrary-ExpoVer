@@ -35,11 +35,26 @@ This project boostraped using Native-Base
 
 <kbd>
 <img src="screenshot/splash.png" width="200" alt="splashscreen">
+</kbd>
+
+<kbd>
 <img src="screenshot/loginpage.png" width="200" alt="loginscreen">
+</kbd>
+
+<kbd>
 <img src="screenshot/homepage.png" width="200" alt="homescreen">
+</kbd>
+
+<kbd>
 <img src="screenshot/bookdetail.png" width="200" 
 alt="detailscreen">
+</kbd>
+
+<kbd>
 <img src="screenshot/historypage.png" width="200" 
 alt="historyscreen">
+</kbd>
+
+<kbd>
 <img src="screenshot/accountpage.png" width="200" alt="accountscreen">
 </kbd>
