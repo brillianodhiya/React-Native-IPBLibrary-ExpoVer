@@ -12,8 +12,18 @@
 ## Running Locally
 
 * Clone this Repository
-* Run ``` npm install ``` or  ``` yarn install ```
-* Run ``` expo start ```
+* Run 
+  ```sh 
+  npm install 
+  ``` 
+  or  
+  ```sh 
+  yarn install 
+  ```
+* Run 
+  ```sh 
+  expo start 
+  ```
 * Scan code QR and Try it
 
 ## The idea behind this project
@@ -32,4 +42,4 @@ alt="detailscreen">
 <img src="screenshot/historypage.png" width="200" 
 alt="historyscreen">
 <img src="screenshot/accountpage.png" width="200" alt="accountscreen">
-<kbd>
+</kbd>
