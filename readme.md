@@ -20,9 +20,28 @@ this project is mobile version from this [app](https://github.com/brillianodhiya
 
 ## Screenshot App
 
-1. Splash Screen ![splashscreen](screenshot/splash.png)
-2. Login Screen ![loginscreen](screenshot/loginpage.png)
-3. Home Screen ![homescreen](screenshot/homepage.png)
-4. Book Detail ![detailbook](screenshot/bookdetail.png)
-5. History Screen ![history](screenshot/historypage.png)
-6. Account Screen ![account](screenshot/accountpage.png)
+<kbd>
+<img src="screenshot/splash.png" width="200" alt="splashscreen">
+<kbd>
+
+<kbd>
+<img src="screenshot/loginpage.png" width="200" alt="loginscreen">
+<kbd>
+
+<kbd>
+<img src="screenshot/homepage.png" width="200" alt="homescreen">
+<kbd>
+
+<kbd>
+<img src="screenshot/bookdetail.png" width="200" 
+alt="detailscreen">
+<kbd>
+
+<kbd>
+<img src="screenshot/historypage.png" width="200" 
+alt="historyscreen">
+<kbd>
+
+<kbd>
+<img src="screenshot/accountpage.png" width="200" alt="accountscreen">
+<kbd>
