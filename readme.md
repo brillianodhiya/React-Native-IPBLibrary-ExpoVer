@@ -1,6 +1,6 @@
 # React Native IPBLibrary Expo 📚
 
-![exporeactnative](https://miro.medium.com/max/3200/1*SDxw4Cd9cexIBtSqqmMqsQ.png)
+![exporeactnative](https://miro.medium.com/max/1838/1*XLPUfIkmIA01h1D0ti-wJw.png)
 
 > this app using expo
 > to try it at https://expo.io/@brilli/IPBLibrary
