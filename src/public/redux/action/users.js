@@ -6,7 +6,7 @@ import NavigationService from "../../../components/Navigationservice";
 export const userRegister = (username, name, email, password) => {
   return {
     type: "USER_REGISTER",
-    payload: Axios.post("http://192.168.6.155:8888/books/register", {
+    payload: Axios.post("https://floating-sierra-16009.herokuapp.com:8888/books/register", {
       username,
       name,
       email,
@@ -68,7 +68,7 @@ export const userLogin = (email, password) => {
   return {
     type: "USER_LOGIN",
     payload: Axios.post(
-      "http://192.168.6.155:8888/books/login",
+      "https://floating-sierra-16009.herokuapp.com:8888/books/login",
       {
         email,
         password

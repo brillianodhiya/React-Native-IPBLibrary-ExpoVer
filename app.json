@@ -25,6 +25,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "Expo React Native IPB Library",
+    "githubUrl": "https://github.com/brillianodhiya/React-Native-IPBLibrary-ExpoVer"
   }
 }

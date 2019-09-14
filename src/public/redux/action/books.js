@@ -4,7 +4,7 @@ import { AsyncStorage } from 'react-native';
 export const getBooks = (search) => {
   return {
     type: "GET_BOOK",
-    payload: Axios.get(`http://192.168.6.155:8888/books/all?search=${search}`)
+    payload: Axios.get(`https://floating-sierra-16009.herokuapp.com/books/all?search=${search}`)
   };
 };
 
@@ -48,7 +48,7 @@ export const rentBook = async idbooks => {
   return {
     type: "RENT_BOOK",
     payload: Axios.post(
-      `http://192.168.6.155:8888/books/rent?idbooks=${idbooks}`,
+      `https://floating-sierra-16009.herokuapp.com/books/rent?idbooks=${idbooks}`,
       "",
       {
         headers: {
@@ -59,7 +59,7 @@ export const rentBook = async idbooks => {
         }
       }
     ),
-    payloads: Axios.get(`http://192.168.6.155:8888/books/all`)
+    payloads: Axios.get(`https://floating-sierra-16009.herokuapp.com:8888/books/all`)
   };
 };
 
@@ -67,7 +67,7 @@ export const returnBook = idbooks => {
   return {
     type: "RETURN_BOOK",
     payload: Axios.post(
-      `http://192.168.6.155:8888/books/return/?idbooks=${idbooks}`
+      `https://floating-sierra-16009.herokuapp.com:8888/books/return/?idbooks=${idbooks}`
     )
   };
 };
@@ -80,7 +80,7 @@ export const getRent = async () => {
   }
   return {
     type: "GET_RENT_BOOK",
-    payload: Axios.get(`http://192.168.6.155:8888/books/rent/`, {
+    payload: Axios.get(`https://floating-sierra-16009.herokuapp.com:8888/books/rent/`, {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
