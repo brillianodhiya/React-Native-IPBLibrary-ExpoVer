@@ -18,7 +18,8 @@
 
 ## The idea behind this project
 
-this project is mobile version from this [app](https://github.com/brillianodhiya/reactjs-rentbook-IPB-Library) and using screen layout clone from [figma react native library](https://www.figma.com/file/shrkaEps4LnHSTkqMxN3cG/Library-Apps?node-id=0%3A1) i use expo cli for this project because just for try React Native using Expo
+This project is mobile version from this [app](https://github.com/brillianodhiya/reactjs-rentbook-IPB-Library) and using screen layout clone from [figma react native library](https://www.figma.com/file/shrkaEps4LnHSTkqMxN3cG/Library-Apps?node-id=0%3A1) i use expo cli for this project because just for try React Native using Expo.
+This project boostraped using Native-Base
 
 ## Screenshot App
 
