@@ -5,6 +5,19 @@
 > this app using expo
 > to try it at https://expo.io/@brilli/IPBLibrary
 
+## Features
+
+* Shorting book by genre
+* Booking book
+* History booking
+* Show account
+
+## Used Technology
+
+* [React-Native](https://facebook.github.io/react-native/)
+* [NativeBase](https://nativebase.io/)
+* [Expo](https://expo.io/)
+
 ## How to use
 
 * use this [link](https://expo.io/@brilli/IPBLibrary) to open project on browser and scan QR code using Expo App
